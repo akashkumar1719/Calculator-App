@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(145deg, #1e1f23, #2b2c31);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator {
+  background: #2b2c31;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 5px 5px 15px #1a1a1d, -5px -5px 15px #3c3d44;
+  border: 1px solid rgba(255, 150, 150, 0.4);
+}
+
+.display {
+  background: transparent;
+  color: white;
+  font-size: 2rem;
+  text-align: right;
+  padding: 10px;
+  margin-bottom: 20px;
+  min-height: 50px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 70px);
+  grid-gap: 10px;
+}
+
+.btn {
+  background: #2b2c31;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: inset 5px 5px 10px #1a1a1d, inset -5px -5px 10px #3c3d44;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ripple effect */
+.btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+/* Default button glow (white) */
+.btn:active::after {
+  background: rgba(255, 255, 255, 0.25);
+  width: 200%;
+  height: 200%;
+}
+
+.btn:hover {
+  box-shadow: inset 3px 3px 6px #1a1a1d, inset -3px -3px 6px #3c3d44;
+}
+
+.btn:active {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4),
+              inset 3px 3px 6px #1a1a1d,
+              inset -3px -3px 6px #3c3d44;
+}
+
+/* Function buttons (AC, DEL, %) yellow glow */
+.btn.func:active {
+  box-shadow: 0 0 15px rgba(255, 255, 0, 0.6),
+              inset 3px 3px 6px #1a1a1d,
+              inset -3px -3px 6px #3c3d44;
+}
+.btn.func:active::after {
+  background: rgba(255, 255, 0, 0.25);
+}
+
+/* Equal button orange glow */
+.btn.equal {
+  background: orange;
+  color: white;
+  font-weight: bold;
+  box-shadow: inset 5px 5px 10px #c76b00, inset -5px -5px 10px #ffb84d;
+}
+.btn.equal:hover {
+  background: #ff9800;
+}
+.btn.equal:active {
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.8),
+              inset 3px 3px 6px #a85e00,
+              inset -3px -3px 6px #ffb84d;
+}
+.btn.equal:active::after {
+  background: rgba(255, 165, 0, 0.3);
+}
+
+/* Yellow text for function keys */
+.yellow {
+  color: #ffff00;
+}
+
+@media (max-width: 400px) {
+  .buttons {
+    grid-template-columns: repeat(4, 60px);
+  }
+  .btn {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
